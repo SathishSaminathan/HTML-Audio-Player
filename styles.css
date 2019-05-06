@@ -1,6 +1,9 @@
 body {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
 }
 
 .background {
@@ -23,7 +26,7 @@ body {
 
 .playerContainer {
   position: absolute;
-  width: 25%;
+  width: 350px;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -104,13 +107,12 @@ body {
 }
 
 .playerContainer .player #seekBar {
-  width: 250px;
+  width: 100%;
   height: 5px;
   background-color: grey;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-left: 25px;
   border-radius: 50px;
   cursor: pointer;
 }
