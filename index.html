@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./jquery-1.10.2.min.js"></script>
+    <!-- <script src="./music.js"></script> -->
+  </head>
+  <body>
+    <div class="background">
+      <img src="./Poster1.jpg" alt="" />
+    </div>
+    <div class="playerContainer">
+      <div class="image">
+        <img src="./Poster1.jpg" alt="" />
+      </div>
+      <div class="player">
+        <div id="songTitle"></div>
+        <div class="buttons">
+          <button id="pre" onclick="nextSong()">
+            <img src="./Pre.png" height="90%" width="90%" alt="" />
+          </button>
+          <button id="play" onclick="playOrPause()">
+            <img src="./Pause.png" alt="" />
+          </button>
+          <button id="next" onclick="prevSong()">
+            <img src="./Next.png" height="90%" width="90%" alt="" />
+          </button>
+        </div>
+        <div id="seekBar">
+          <div id="fill"></div>
+          <div id="handle"></div>
+        </div>
+        <div id="timer"></div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var songs = ["song1.mp3", "song2.mp3", "song3.mp3"];
+    var posters = ["Poster1.jpg", "Poster2.jpg", "Poster3.jpg"];
+
+    var songTitle = document.getElementById("songTitle");
+    var fillBar = document.getElementById("fill");
+    var timer = document.getElementById("timer");
+
+    var song = new Audio();
+    var currentSong = 1;
+
+    window.onload = playSong;
+
+    function playSong() {
+      songTitle.textContent = songs[currentSong];
+      song.src = songs[currentSong];
+      song.play();
+      $("#play img").attr("src", "Pause.png");
+      $(".image img").attr("src", posters[currentSong]);
+      $(".background img").attr("src", posters[currentSong]);
+    }
+
+    function playOrPause() {
+      if (song.paused) {
+        song.play();
+        $("#play img").attr("src", "Pause.png");
+      } else {
+        console.log("playing");
+        song.pause();
+        $("#play img").attr("src", "Play.png");
+      }
+    }
+
+    function nextSong() {
+      //  console.log( $("#play img").attr("src", "Pause.png"))
+      currentSong++;
+      if (currentSong > 1) {
+        currentSong = 0;
+      }
+      playSong();
+    }
+
+    function prevSong() {
+      currentSong--;
+      if (currentSong < 0) {
+        currentSong = 1;
+      }
+      playSong();
+    }
+
+    song.addEventListener("timeupdate", function() {
+      var position = song.currentTime / song.duration;
+      // timer.textContent = song.currentTime
+      fillBar.style.width = position * 100 + "%";
+    });
+  </script>
+</html>

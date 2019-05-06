@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.background {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  overflow: hidden;
+  img {
+    height: 120vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(20px);
+  }
+}
+
+.playerContainer {
+  position: absolute;
+  width: 25%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  .image {
+    img {
+      height: 180px;
+      width: 100%;
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+  }
+  .player {
+    padding: 25px;
+    background-color: white;
+    #songTitle {
+      font-family: monospace;
+      color: #333333;
+      font-size: 16px;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .buttons {
+      height: 50px;
+      width: 100%;
+      margin-top: 50px;
+      position: relative;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      #play,
+      #pre,
+      #next {
+        cursor: pointer;
+        height: 50px;
+        width: 50px;
+        border: 0;
+        background-color: royalblue;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        outline: none;
+        border-radius: 50%;
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      #pre {
+        width: 30px;
+        height: 30px;
+        left: 30%;
+      }
+      #next {
+        left: 70%;
+        width: 30px;
+        height: 30px;
+      }
+    }
+    #seekBar {
+      width: 250px;
+      height: 5px;
+      background-color: grey;
+      display: flex;
+      margin-left: 25px;
+      border-radius: 50px;
+      cursor: pointer;
+      #fill{
+          height: 5px;
+          background-color: royalblue;
+          border-radius: 20px;
+      }
+      #handle{
+          height: 8px;
+          width: 8px;
+          background-color: royalblue;
+          margin-left: -5px;
+          border-radius: 50%;
+          transform: scale(2)
+      }
+    }
+  }
+}
