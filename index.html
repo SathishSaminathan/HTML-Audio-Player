@@ -55,7 +55,18 @@
       songTitle.textContent = songs[currentSong];
       song.src = songs[currentSong];
       song.play();
-      $("#play img").attr("src", "Pause.png");
+      // if (song.paused) {
+      //   song.play();
+      //   $("#play img").attr("src", "Pause.png");
+      // } else {
+      //   console.log("playing");
+      //   song.pause();
+      //   $("#play img").attr("src", "Play.png");
+      // }
+
+      if (song.played) {
+        $("#play img").attr("src", "Pause.png");
+      }
       $(".image img").attr("src", posters[currentSong]);
       $(".background img").attr("src", posters[currentSong]);
     }
